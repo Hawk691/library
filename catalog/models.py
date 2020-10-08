@@ -15,7 +15,7 @@ class Genre(models.Model):
         return self.name
 
 
-class Book(model.Models):
+class Book(models.Model):
     """
     Model representing a book
     """
@@ -24,7 +24,7 @@ class Book(model.Models):
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
     isbn = models.CharField('ISBN', max_length=13, help_text='13 Characters code of the book')
-    genre = molels.ManyToManyField(Genre, help_text='Select a gere for this book')
+    genre = models.ManyToManyField(Genre, help_text='Select a gere for this book')
 
     def __str__(self):
         """
@@ -33,4 +33,10 @@ class Book(model.Models):
 
         return self.title
 
+
+class Author(models.Model):
+    """
+    Model representing an authors of books
+    """
+    pass
 
