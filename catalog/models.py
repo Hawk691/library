@@ -3,7 +3,7 @@ import uuid
 
 class Genre(models.Model):
     """
-    Model representing a book genre 
+    Model representing a book genre
     """
 
     name = models.CharField(max_length=200, help_text='Enter a book genre')
@@ -23,7 +23,8 @@ class Book(models.Model):
 
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    summary = models.TextField(max_length=1000, help_text='Enter a brief description of the book')
+    summary = models.TextField(max_length=1000, help_text='Enter\
+            a brief description of the book')
     isbn = models.CharField('ISBN', max_length=13, help_text='13 Characters code of the book')
     genre = models.ManyToManyField(Genre, help_text='Select a gere for this book')
     language = models.ForeignKey('Language', verbose_name='Original language', on_delete=models.SET_NULL, null=True)
@@ -41,6 +42,15 @@ class Book(models.Model):
         """
 
         return reverse('book-detail', args=[str(self.id)])
+
+    def display_genre(self):
+        """
+        Creates a string for the Genre. This is required to display
+        related Genre strings
+        """
+        return ', '.join([genre.name for genre in self.genre.all()[:3]])
+
+    display_genre.short_description = 'Genre'
 
 
 class Author(models.Model):
@@ -67,7 +77,7 @@ class Author(models.Model):
 
         return '%s, %s' % (self.last_name, self.first_name)
 
-    
+
 class BookInstance(models.Model):
     """
     Model representing a specific copy of the book, that can be borrowed from the library
@@ -98,5 +108,10 @@ class BookInstance(models.Model):
         return '%s (%s)' % (self.id, self.book.title)
 
 class Language(models.Model):
-    lang = models.CharField(max_length=50)
+    lang = models.CharField('Language', max_length=50)
 
+    def __str__(self):
+        """
+        String for representing the Model object
+        """
+        return self.lang
