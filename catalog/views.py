@@ -37,5 +37,9 @@ class BookDetailView(generic.DetailView):
     """
     Class representing detail view of the particular book
     """
+<<<<<<< HEAD
 
     model = Book
+=======
+    pass
+>>>>>>> 2cd955033deada40a35ba499fac303fe81a6a001
