@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 import uuid
 
 class Genre(models.Model):
@@ -41,7 +42,7 @@ class Book(models.Model):
         Returns the url to access a particular book instance
         """
 
-        return reverse('book-detail', args=[str(self.id)])
+#        return reverse('book-detail', args=[str(self.id)])
 
     def display_genre(self):
         """
