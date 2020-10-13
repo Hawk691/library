@@ -16,4 +16,5 @@ catalog/author/<id>         author detail info
 urlpatterns = [
     path('', views.index, name='index'),
     url(r'^books/$',views.BookListView.as_view(), name='books'),
+    url(r'^book/<id>$', views.BookDetailView.as_view(), name='book-detail'),
         ]

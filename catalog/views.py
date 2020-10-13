@@ -5,7 +5,7 @@ from django.views import generic
 
 def index(request):
     """
-    Function that represent main page of the site
+    Function that represent main page Index of the site
     """
 
     num_books = Book.objects.all().count()
@@ -31,3 +31,10 @@ class BookListView(generic.ListView):
     """
 
     model = Book
+    
+
+class BookDetailView(generic.DetailView):
+    """
+    Class representing detail view of the particular book
+    """
+    pass
