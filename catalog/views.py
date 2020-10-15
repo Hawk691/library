@@ -31,15 +31,20 @@ class BookListView(generic.ListView):
     """
 
     model = Book
-    
+
 
 class BookDetailView(generic.DetailView):
     """
     Class representing detail view of the particular book
     """
-<<<<<<< HEAD
 
     model = Book
-=======
-    pass
->>>>>>> 2cd955033deada40a35ba499fac303fe81a6a001
+
+
+class AuthorListView(generic.ListView):
+    """
+    Class representing list of all authors
+    """
+
+    model = Author
+

@@ -25,7 +25,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
     summary = models.TextField(max_length=1000, help_text='Enter\
-            a brief description of the book')
+                                                           a brief description of the book')
     isbn = models.CharField('ISBN', max_length=13, help_text='13 Characters code of the book')
     genre = models.ManyToManyField(Genre, help_text='Select a gere for this book')
     language = models.ForeignKey('Language', verbose_name='Original language', on_delete=models.SET_NULL, null=True)
@@ -42,7 +42,7 @@ class Book(models.Model):
         Returns the url to access a particular book instance
         """
 
-#        return reverse('book-detail', args=[str(self.id)])
+        return reverse('book-detail', args=[str(self.id)])
 
     def display_genre(self):
         """
@@ -100,6 +100,10 @@ class BookInstance(models.Model):
 
 
     class Meta:
+        """
+        Meta class for manage BookInstance behavior
+        """
+
         ordering = ['due_back']
 
     def __str__(self):
@@ -109,6 +113,10 @@ class BookInstance(models.Model):
         return '%s (%s)' % (self.id, self.book.title)
 
 class Language(models.Model):
+    """
+    Model representing language of the book
+    """
+
     lang = models.CharField('Language', max_length=50)
 
     def __str__(self):
