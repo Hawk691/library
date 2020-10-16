@@ -64,7 +64,7 @@ class Author(models.Model):
     date_of_birth = models.DateField('Born', null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
 
-    def get_abslute_url(self):
+    def get_absolute_url(self):
         """
         Returns the url to access a particular author instance
         """

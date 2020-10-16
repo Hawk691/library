@@ -48,3 +48,10 @@ class AuthorListView(generic.ListView):
 
     model = Author
 
+
+class AuthorDetailView(generic.DetailView):
+    """
+    Class representing detail view of the Author
+    """
+
+    model = Author
