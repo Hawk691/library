@@ -13,16 +13,14 @@ def index(request):
     # show avaliable books with status 'a'
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
     num_authors = Author.objects.count()
-    return render(
-            request,
-            'index.html',
-            context={
-                'num_books':num_books,
-                'num_instances':num_instances,
-                'num_instances_available':num_instances_available,
-                'num_authors':num_authors,
-                }
-            )
+    num_genres = Genre.objects.count()
+    return render(request, 'index.html', context={'num_books':num_books,
+                                                  'num_instances':num_instances,
+                                                  'num_instances_available':num_instances_available,
+                                                  'num_authors':num_authors,
+                                                  'num_genres':num_genres,
+                                                 }
+                                            )
 
 
 class BookListView(generic.ListView):
