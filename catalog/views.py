@@ -6,6 +6,7 @@ from django.views import generic
 def index(request):
     """
     Function that represent main page Index of the site
+    just for commit test 
     """
 
     num_books = Book.objects.all().count()
